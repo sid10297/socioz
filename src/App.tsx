@@ -3,8 +3,7 @@ import { Routes } from "./routes/Routes";
 
 const App = () => {
   return (
-    <div>
-      <p className="text-2xl font-bold">Socioz</p>
+    <div className="bg-gray-100">
       <AuthProvider>
         <Routes />
       </AuthProvider>
