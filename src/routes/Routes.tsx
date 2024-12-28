@@ -12,12 +12,16 @@ export const Routes = () => {
       ),
     },
     {
-      path: "/login",
-      element: <div>Login</div>,
+      path: "/signin",
+      element: <div>Signin</div>,
     },
     {
       path: "/signup",
       element: <div>Signup</div>,
+    },
+    {
+      path: "*",
+      element: <div>404</div>,
     },
   ]);
 
