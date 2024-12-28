@@ -19,7 +19,7 @@ export default function Header() {
     <div className="bg-white border-b border-gray-200 p-4 rounded-lg">
       <div className="flex justify-between items-center">
         <div>
-          <p className="text-lg font-bold">{APP_TITLE}</p>
+          <p className="text-lg font-bold text-slate-400">{APP_TITLE}</p>
         </div>
         <div>
           <button

@@ -16,6 +16,7 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,7 +41,14 @@ const Signup = () => {
       return;
     }
 
-    await signup({ email, password, username, firstName, lastName });
+    setLoading(true);
+    try {
+      await signup({ email, password, username, firstName, lastName });
+    } catch (error) {
+      console.error("error: ", error);
+    } finally {
+      setLoading(false);
+    }
 
     setErrors({
       firstName: "",
@@ -56,7 +64,7 @@ const Signup = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center h-screen">
-      <p className="text-3xl font-bold mb-4">{APP_TITLE}</p>
+      <p className="text-3xl font-bold mb-4 text-slate-400">{APP_TITLE}</p>
       <form className="w-1/2 flex flex-col gap-2" onSubmit={handleSignup}>
         <input
           className="border border-gray-300 rounded-md p-2"
@@ -103,8 +111,12 @@ const Signup = () => {
           <InlineError message={errors.confirmPassword} />
         )}
 
-        <button className="bg-blue-500 text-white rounded-md p-2" type="submit">
-          Signup
+        <button
+          className="bg-blue-500 text-white rounded-md p-2 disabled:opacity-50"
+          type="submit"
+          disabled={loading}
+        >
+          {loading ? "Signing up..." : "Signup"}
         </button>
         <Link
           to="/signin"
