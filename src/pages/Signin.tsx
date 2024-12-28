@@ -3,6 +3,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { validateSignin } from "../helpers/validateSignin";
 import { useState } from "react";
 import { InlineError } from "../components/InlineError";
+import { APP_TITLE } from "../constants";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Signin = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center h-screen">
-      <p className="text-3xl font-bold mb-4">Socioz</p>
+      <p className="text-3xl font-bold mb-4">{APP_TITLE}</p>
       <form className="w-1/2 flex flex-col gap-2" onSubmit={handleSignin}>
         <input
           className="border border-gray-300 rounded-md p-2"

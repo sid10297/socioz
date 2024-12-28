@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { APP_TITLE } from "../constants";
 
 export default function Header() {
   const { signOut } = useAuthContext();
@@ -15,10 +16,10 @@ export default function Header() {
   };
 
   return (
-    <div className="bg-white border-b border-gray-200">
-      <div className="flex justify-between items-center px-4 py-2">
+    <div className="bg-white border-b border-gray-200 p-4 rounded-lg">
+      <div className="flex justify-between items-center">
         <div>
-          <p className="text-lg font-bold">Socioz</p>
+          <p className="text-lg font-bold">{APP_TITLE}</p>
         </div>
         <div>
           <button

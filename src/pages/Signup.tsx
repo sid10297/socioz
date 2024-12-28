@@ -3,6 +3,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { validateSignup } from "../helpers/validateSignup";
 import { InlineError } from "../components/InlineError";
 import { useState } from "react";
+import { APP_TITLE } from "../constants";
 
 const Signup = () => {
   const { signup } = useAuthContext();
@@ -55,7 +56,7 @@ const Signup = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center h-screen">
-      <p className="text-3xl font-bold mb-4">Socioz</p>
+      <p className="text-3xl font-bold mb-4">{APP_TITLE}</p>
       <form className="w-1/2 flex flex-col gap-2" onSubmit={handleSignup}>
         <input
           className="border border-gray-300 rounded-md p-2"
