@@ -1,8 +1,9 @@
 import { useRoutes } from "react-router-dom";
-import ProtectedRoute from "./ProtectedRoute";
+import NotFound from "../pages/NotFound";
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
-import NotFound from "../pages/NotFound";
+import ProtectedRoute from "./ProtectedRoute";
+import Home from "../pages/Home";
 
 export const Routes = () => {
   const routes = useRoutes([
@@ -10,7 +11,7 @@ export const Routes = () => {
       path: "/",
       element: (
         <ProtectedRoute>
-          <div>Hello world!</div>
+          <Home />
         </ProtectedRoute>
       ),
     },
