@@ -11,7 +11,7 @@ export default function Header() {
       signOut();
       navigate("/signin");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

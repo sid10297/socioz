@@ -1,13 +1,21 @@
 import { User } from "@supabase/supabase-js";
 
-import { createClient } from "@supabase/supabase-js";
 import { SigninParams, SignupParams } from "../types/auth";
+import { supabase } from "../lib/supabase";
 
 export const useAuth = (setUser: (user: User | null) => void) => {
-  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-  const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+  const getSession = async () => {
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.getSession();
 
-  const supabase = createClient(supabaseUrl, supabaseKey);
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    setUser(session?.user ?? null);
+  };
 
   const signup = async ({
     email,
@@ -58,5 +66,5 @@ export const useAuth = (setUser: (user: User | null) => void) => {
     setUser(null);
   };
 
-  return { signup, signInWithEmail, signOut };
+  return { signup, signInWithEmail, signOut, getSession };
 };

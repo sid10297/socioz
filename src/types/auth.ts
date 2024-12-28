@@ -15,6 +15,7 @@ export type SigninParams = {
 
 export type AuthContextType = {
   user: User | null;
+  loading: boolean;
   signup: (data: {
     email: string;
     password: string;

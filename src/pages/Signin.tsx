@@ -22,7 +22,7 @@ const Signin = () => {
         await signInWithEmail({ email, password });
         navigate("/");
       } catch (_error) {
-        console.log("error: ", _error);
+        console.error("error: ", _error);
         setError("Invalid email or password");
       }
     }
