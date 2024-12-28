@@ -24,14 +24,25 @@ export const useAuth = (setUser: (user: User | null) => void) => {
     firstName,
     lastName,
   }: SignupParams) => {
+    const { error: userInsertError } = await supabase.from("users").insert({
+      username,
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+    });
+
+    if (userInsertError) {
+      throw new Error(userInsertError.message);
+    }
+
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
         data: {
-          username: username,
-          firstName: firstName,
-          lastName: lastName,
+          username,
+          first_name: firstName,
+          last_name: lastName,
         },
       },
     });
